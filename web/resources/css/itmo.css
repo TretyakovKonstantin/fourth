@@ -1,0 +1,38 @@
+.button {
+    background: white;
+    width: auto;
+    display: inline-block;
+    padding: 1ex 1em;
+    margin: auto 2px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 20px;
+    border: 2px solid #bbb;
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.button:hover {
+    background: white;
+    border: 2px solid #1946ba;
+    color: #1946ba;
+    outline: none;
+}
+
+.button.crimson {
+    margin: 10px auto;
+    font-size: large;
+}
+
+.button.crimson:hover {
+    border-color: #EC0B43;
+    color: #EC0B43;
+}
+
+input {
+    padding: 1ex;
+    border-radius: 20px;
+    border: 2px solid #1946ba;
+}

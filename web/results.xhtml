@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <title>PAGE</title>
+</h:head>
+<h:body>
+    <ui:composition template="template.xhtml">
+        <ui:define name="head">
+            <title>Лабораторная работа</title>
+            <h:outputStylesheet library="css" name="results.css"/>
+            <h:outputScript library="js" name="draw.js"/>
+            <h:outputScript library="js" name="drawCheck.js"/>
+            <h:outputScript library="js" name="send.js"/>
+        </ui:define>
+        <ui:define name="content">
+            <td class="content" colspan="7">
+                <table class="result">
+                    <thead>
+                    <tr>
+                        <th class="number">x</th>
+                        <th class="number">y</th>
+                        <th class="number">r</th>
+                        <th>Результат</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <ui:repeat value="#{History.getRecords()}" var="value">
+                        <tr>
+                            <td class="number">
+                                <h:outputText value="#{value.point.x}">
+                                    <f:convertNumber maxFractionDigits="2"/>
+                                </h:outputText>
+                            </td>
+                            <td class="number">
+                                <h:outputText value="#{value.point.y}">
+                                    <f:convertNumber maxFractionDigits="2"/>
+                                </h:outputText>
+                            </td>
+                            <td class="number">
+                                <h:outputText value="#{value.radius}">
+                                    <f:convertNumber maxFractionDigits="1"/>
+                                </h:outputText>
+                            </td>
+                            <td>
+                                <h:outputText rendered="#{value.result}" value="Точка входит в область."/>
+                                <h:outputText rendered="#{!value.result}" value="Точка находится вне области."/>
+                            </td>
+                        </tr>
+                        <script type="text/javascript">
+                            window.addEventListener("load", function ()
+                            {
+                                drawPoint(document.getElementById("areaCanvas"), #{value.point.x}, #{value.point.y}, document.getElementById("radius").value);
+                            });
+                        </script>
+                    </ui:repeat>
+                    </tbody>
+                </table>
+                <button id="main" type="button" class="crimson submit"
+                        onclick="window.location='main.xhtml';">Назад
+                </button>
+            </td>
+            <td class="sidebar" colspan="5">
+                <ui:include src="area.html"/>
+            </td>
+            <input type="hidden" id="radius" value="#{History.getRecords().getFirst().radius}"/>
+            <h:form id="form" prependId="false">
+                <h:inputHidden id="x" value="#{Record.point.x}"/>
+                <h:inputHidden id="y" value="#{Record.point.y}"/>
+                <h:inputHidden id="r" value="#{Record.radius}"/>
+                <h:commandButton id="submit" styleClass="button crimson" action="results.xhtml" type="submit" value="Проверить">
+                    <f:actionListener binding="#{Record.process()}"/>
+                    <f:actionListener binding="#{History.addRecord(Record)}"/>
+                </h:commandButton>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>PAGE</title>
+</h:head>
+<h:body>
+    <ui:composition template="template.xhtml">
+        <ui:define name="head">
+            <title>Лабораторная работа</title>
+            <h:outputScript library="js" name="draw.js"/>
+            <h:outputScript library="js" name="drawMain.js"/>
+            <h:outputScript library="js" name="send.js"/>
+            <h:outputStylesheet library="css" name="main.css"/>
+        </ui:define>
+        <ui:define name="content">
+            <td class="content" colspan="7">
+                <h:form prependId="false">
+                    <div id="x-group">
+                        <table align="center">
+                            <tr>
+                                <td>
+                                    X =
+                                </td>
+                                <td>
+                                    <h:selectOneRadio styleClass="radio" required="true" value="#{Record.point.x}">
+                                        <f:selectItem itemValue="-2.5" itemLabel="-2.5"/>
+                                        <f:selectItem itemValue="-2" itemLabel="-2"/>
+                                        <f:selectItem itemValue="-1.5" itemLabel="-1.5"/>
+                                        <f:selectItem itemValue="-1" itemLabel="-1"/>
+                                        <f:selectItem itemValue="-0.5" itemLabel="-0.5"/>
+                                        <f:selectItem itemValue="0" itemLabel="0"/>
+                                        <f:selectItem itemValue="0.5" itemLabel="0.5"/>
+                                        <f:selectItem itemValue="1" itemLabel="1"/>
+                                    </h:selectOneRadio>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="y-group">
+                        <label for="y">
+                            Y =
+                        </label>
+                        <h:inputText pt:placeholder="(-5; 3)" id="y" required="true" value="#{Record.point.y}"/>
+                    </div>
+                    <div id="r-group">
+                        <label>
+                            R =
+                        </label>
+                        <p:spinner onchange="drawGraph(canvas, document.getElementById('r_input').value, itmoRed);"
+                                   id="r" name="r" min="1" required="true" value="#{Record.radius}" max="3"
+                                   stepFactor="0.5"/>
+                    </div>
+                    <div>
+                        <h:commandButton id="submit" action="results.xhtml" type="submit" value="Проверить"
+                                         class="button crimson">
+                            <f:actionListener binding="#{Record.process()}"/>
+                            <f:actionListener binding="#{History.addRecord(Record)}"/>
+                        </h:commandButton>
+
+                    </div>
+                    <div>
+                        <button id="main" type="button" class="button"
+                                onclick="window.location='index.xhtml';">На главную
+                        </button>
+                    </div>
+                    <h:inputHidden id="x" value="#{Record.point.x}"/>
+                </h:form>
+            </td>
+            <td class="sidebar" colspan="5">
+                <ui:include src="area.html"/>
+            </td>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>
+
+

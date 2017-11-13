@@ -1,0 +1,29 @@
+@import url("#{resource['css/master.css']}");
+
+#x-group, #y-group, #r-group {
+    margin: 8px auto;
+}
+
+#y {
+    width: 139px;
+    height: 13px;
+}
+
+#y:focus {
+    outline: none;
+}
+
+#r_input {
+    all: unset;
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    text-align: left;
+    padding: 1ex;
+    width: 139px;
+    height: 13px;
+    border-radius: 20px;
+    border: 2px solid #1946ba;
+}
