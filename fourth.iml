@@ -9,9 +9,7 @@
         <webroots>
           <root url="file://$MODULE_DIR$/web" relative="/" />
         </webroots>
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/src" />
-        </sourceRoots>
+        <sourceRoots />
       </configuration>
     </facet>
   </component>
@@ -22,6 +20,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/web/src/main/java" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -37,5 +36,6 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.slf4j:slf4j-api:1.7.7" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.google.guava:guava:18.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.slf4j:slf4j-simple:1.7.7" level="project" />
+    <orderEntry type="library" name="postgresql-42.1.4" level="project" />
   </component>
 </module>

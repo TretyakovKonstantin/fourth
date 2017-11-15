@@ -1,6 +1,6 @@
 function startTime() {
     let second = 1000;
-    let n = 13;
+    let n = 10;
     let today = new Date();
     let hours = today.getHours();
     let minutes = today.getMinutes();

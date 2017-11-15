@@ -1,6 +1,6 @@
 let canvas;
 let radius;
-let itmoRed = "#EC0B43";
+let itmoRed = "#1e1eec";
 
 window.addEventListener("load",
     function () {

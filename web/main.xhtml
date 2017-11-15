@@ -54,8 +54,8 @@
                             R =
                         </label>
                         <p:spinner onchange="drawGraph(canvas, document.getElementById('r_input').value, itmoRed);"
-                                   id="r" name="r" min="1" required="true" value="#{Record.radius}" max="3"
-                                   stepFactor="0.5"/>
+                                   id="r_input" name="r" min="1" value="#{Record.radius}" required="true" max="3" stepFactor="0.5">
+                        </p:spinner>
                     </div>
                     <div>
                         <h:commandButton id="submit" action="results.xhtml" type="submit" value="Проверить"

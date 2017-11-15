@@ -15,17 +15,17 @@ function convertFromPointToCanvas(canvas, xPoint, yPoint)
 function isPointInArea(x, y, radius)
 {
     let inTriangle =
-        (-radius / 2 <= x && x <= 0) &&
-        (0 >= y && y >= -radius) &&
-        (y + x * 2) >= -radius;
+        (x >= -radius && x <= 0) &&
+        (y >= 0 && y <= -radius) &&
+        (x + y) <= radius;
 
     let inCircleQuadrant =
-        (x <= 0 && y >= 0) &&
+        (x >= 0 && y <= 0) &&
         (x * x + y * y <= radius * radius);
 
     let inSquare =
-        (0 <= x && x <= radius / 2) &&
-        (-radius <= y && y <= 0);
+        (x >= 0 && x <= radius) &&
+        (y <= radius / 2 && y >= 0);
 
     return inCircleQuadrant || inSquare || inTriangle;
 }
@@ -152,10 +152,10 @@ function drawTriangle(canvas, color)
     let width = canvas.width;
     let height = canvas.height;
     context.beginPath();
-    context.moveTo(width / 4 + 10, height / 2);
+    context.moveTo(20, height / 2);
     context.lineTo(width / 2, height / 2);
-    context.lineTo(width / 2, height - 20);
-    context.lineTo(width / 4 + 10, height / 2);
+    context.lineTo(width / 2, 20);
+    context.lineTo(20, height / 2);
     context.closePath();
     context.strokeStyle = color;
     context.fillStyle = color;
@@ -170,9 +170,9 @@ function drawRectangle(canvas, color)
     let height = canvas.height;
     context.beginPath();
     context.moveTo(width / 2, height / 2);
-    context.lineTo(3 * width / 4 - 10, height / 2);
-    context.lineTo(3 * width / 4 - 10, height - 20);
-    context.lineTo(width / 2, height - 20);
+    context.lineTo(width / 2, height / 4 + 10);
+    context.lineTo(width - 20, height / 4 + 10 );
+    context.lineTo(width - 20, height / 2);
     context.closePath();
     context.strokeStyle = color;
     context.fillStyle = color;
@@ -185,7 +185,7 @@ function drawCircleQuadrant(canvas, color)
     let context = canvas.getContext("2d");
     let width = canvas.width;
     let height = canvas.height;
-    context.arc(width / 2, height / 2, width / 2 - 20, Math.PI, 3 * Math.PI / 2, false);
+    context.arc(width / 2, height / 2, width / 2 - 20, 2*Math.PI, 5 * Math.PI / 2, false);
     context.closePath();
     context.strokeStyle = color;
     context.fillStyle = color;
