@@ -16,8 +16,8 @@ function isPointInArea(x, y, radius)
 {
     let inTriangle =
         (x >= -radius && x <= 0) &&
-        (y >= 0 && y <= -radius) &&
-        (x + y) <= radius;
+        (y >= 0 && y <= radius) &&
+        (-x + y) <= radius;
 
     let inCircleQuadrant =
         (x >= 0 && y <= 0) &&
