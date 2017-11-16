@@ -13,7 +13,7 @@
     outline: none;
 }
 
-#r_input {
+#r_input, #y-group {
     all: unset;
     background-color: white;
     font-family: 'Roboto', sans-serif;

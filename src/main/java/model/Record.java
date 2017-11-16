@@ -1,11 +1,10 @@
 package model;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
 
-//@ManagedBean(name = "Record", eager = true)
-//@ViewScoped
+@Entity
 public class Record implements Serializable
 {
     private Point point;
@@ -58,6 +57,10 @@ public class Record implements Serializable
         return result;
     }
 
+    public void setResult(Boolean result) {
+        this.result = result;
+    }
+
     @Override
     public boolean equals(Object o)
     {
@@ -82,5 +85,16 @@ public class Record implements Serializable
         result1 = 31 * result1 + (result != null ? result.hashCode() : 0);
         result1 = 31 * result1 + (area != null ? area.hashCode() : 0);
         return result1;
+    }
+
+    private String id;
+
+    @Id
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

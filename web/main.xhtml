@@ -18,6 +18,7 @@
             <h:outputScript library="js" name="drawMain.js"/>
             <h:outputScript library="js" name="send.js"/>
             <h:outputStylesheet library="css" name="main.css"/>
+
         </ui:define>
         <ui:define name="content">
             <td class="content" colspan="7">
@@ -47,7 +48,10 @@
                         <label for="y">
                             Y =
                         </label>
-                        <h:inputText pt:placeholder="(-5; 3)" id="y" required="true" value="#{Record.point.y}"/>
+                        <!--<h:inputText pt:placeholder="(-5; 3)" id="y" required="true" value="#{Record.point.y}"/>-->
+                        <p:spinner
+                                   id="y"  name="y" min="-5" required="true" value="#{Record.point.y}" max="5"
+                                   stepFactor="0.1"/>
                     </div>
                     <div id="r-group">
                         <label>
@@ -58,7 +62,7 @@
                                    stepFactor="0.5"/>
                     </div>
                     <div>
-                        <h:commandButton id="submit" action="results.xhtml" type="submit" value="Проверить"
+                        <h:commandButton id="submit" action="results.xhtml"  type="submit" value="Проверить"
                                          class="button crimson">
                             <f:actionListener binding="#{Record.process()}"/>
                             <f:actionListener binding="#{History.addRecord(Record)}"/>

@@ -1,10 +1,12 @@
 package model;
 
-public class Area {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.io.Serializable;
+
+public class Area implements Serializable {
     private Double radius = 1D;
 
-    //public boolean contains(Point point) - fixed by Zakusilo V.A.
-    //check, if point is in area
     public boolean contains(Point point) {
         double x = point.getX();
         double y = point.getY();
