@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,400i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
+html, body {
+    height: 75%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-image: url("#{resource['img/bg.jpg']}");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.title {
+    font-size: x-large;
+}
+
+table.container {
+    table-layout: fixed;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-spacing: 0;
+    border-collapse: separate;
+}
+
+body td {
+    vertical-align: middle;
+}
+
+tr#header, tr#footer {
+    background-image: url("#{resource['img/footer.jpg']}");
+    background-repeat: no-repeat;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    height: 100px;
+    color: black;
+    background-size: 100%;
+}
+
+tr#fill {
+    text-align: center;
+}
+
+.pond {
+    text-align: right;
+    padding: 20px;
+}
+
+.pond img {
+    max-height: 50px;
+}
+
+.logo {
+    padding: 20px;
+}
+
+.logo img {
+    max-width: 100%;
+}
+
+.institution {
+    padding: 20px;
+    text-align: right;
+    background: url("#{resource['img/red.png']}") no-repeat right center;
+    background-size: contain;
+}
+
+.institution img {
+    max-height: 50px;
+}
+
+td.contacts {
+    padding: 20px;
+    text-align: left;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+td.content {
+    padding: 14px;
+    text-align: center;
+}
+
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+a#repository {
+    text-decoration: none;
+}
+
+a#repository span:hover {
+    color: #ffbf80;
+}
+
+a#repository span {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10pt;
+    text-decoration: underline;
+    color: #FF8400;
+}
+
+.sidebar {
+    text-align: center;
+}
+
+.sidebar img {
+    max-height: 400px;
+    max-width: 400px;
+}
+
+#areaCanvas {
+    cursor: crosshair;
+}

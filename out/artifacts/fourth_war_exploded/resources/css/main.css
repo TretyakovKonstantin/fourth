@@ -1,0 +1,20 @@
+@import url("#{resource['css/master.css']}");
+
+#x-group, #y-group, #r-group {
+    margin: 20px auto;
+}
+
+.spinner{
+    border-color: black;
+    border-width: 3px;
+    border-style: solid;
+    width: 100px;
+    height: 20px;
+}
+.inputText{
+    border-color: black;
+    border-width: 3px;
+    border-style: solid;
+    width: 100px;
+    height: 20px;
+}

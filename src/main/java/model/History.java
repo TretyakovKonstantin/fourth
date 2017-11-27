@@ -7,7 +7,7 @@ import java.util.*;
 
 public class History
 {
-    private static final int CAPACITY = 10;
+    private static final int CAPACITY = 5;
     private Deque<Record> records;
 
     public History()

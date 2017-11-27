@@ -1,0 +1,6 @@
+@import url("#{resource['css/master.css']}");
+
+#clock {
+    font-size: xx-large;
+    text-align: center;
+}
