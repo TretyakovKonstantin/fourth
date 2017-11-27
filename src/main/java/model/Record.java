@@ -1,30 +1,37 @@
 package model;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.io.Serializable;
 
 @Entity
 public class Record implements Serializable
 {
+    @EmbeddedId
     private Point point;
-    private Boolean result;
+    @Transient
     private Area area;
+    private Boolean result;
+    private double radius;
+
+
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+
 
     public Record()
     {
         this.point = new Point();
         this.area = new Area();
+        this.radius = area.getRadius();
     }
 
-    public Double getRadius()
+    public double getRadius()
     {
-        return getArea().getRadius();
-    }
-
-    public void setRadius(Double radius)
-    {
-        this.getArea().setRadius(radius);
+        return radius;
     }
 
     public Point getPoint()
@@ -85,16 +92,5 @@ public class Record implements Serializable
         result1 = 31 * result1 + (result != null ? result.hashCode() : 0);
         result1 = 31 * result1 + (area != null ? area.hashCode() : 0);
         return result1;
-    }
-
-    private String id;
-
-    @Id
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 }

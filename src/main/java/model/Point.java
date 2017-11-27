@@ -1,9 +1,14 @@
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import java.io.Serializable;
 
+@Embeddable
 public class Point implements Serializable {
+    @Column(name = "x")
     private Double x = 0D;
+    @Column(name = "y")
     private Double y = 0D;
 
     public Double getX() {
@@ -11,6 +16,7 @@ public class Point implements Serializable {
     }
 
     public void setX(Double x) {
+        if (x < -5 || x > 5) return;
         this.x = x;
     }
 

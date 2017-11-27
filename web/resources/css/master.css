@@ -1,4 +1,3 @@
-@import url("#{resource['css/itmo.css']}");
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,700');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,400i,700,700i');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
@@ -9,8 +8,10 @@ html, body {
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-size: contain;
-    background-image: url("#{resource['img/background.png']}");
+    background-image: url("#{resource['img/bg.jpg']}");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
 
 .title {
@@ -35,11 +36,13 @@ body td {
 }
 
 tr#header, tr#footer {
-    background-color: #1946BA;
+    background-image: url("#{resource['img/footer.jpg']}");
+    background-repeat: no-repeat;
     text-align: center;
-    height: 100px;
     font-family: 'Roboto Slab', serif;
-    color: white;
+    height: 100px;
+    color: black;
+    background-size: 100%;
 }
 
 tr#fill {

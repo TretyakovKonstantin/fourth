@@ -30,16 +30,9 @@
                                     X =
                                 </td>
                                 <td>
-                                    <h:selectOneRadio styleClass="radio" required="true" value="#{Record.point.x}">
-                                        <f:selectItem itemValue="-2.5" itemLabel="-2.5"/>
-                                        <f:selectItem itemValue="-2" itemLabel="-2"/>
-                                        <f:selectItem itemValue="-1.5" itemLabel="-1.5"/>
-                                        <f:selectItem itemValue="-1" itemLabel="-1"/>
-                                        <f:selectItem itemValue="-0.5" itemLabel="-0.5"/>
-                                        <f:selectItem itemValue="0" itemLabel="0"/>
-                                        <f:selectItem itemValue="0.5" itemLabel="0.5"/>
-                                        <f:selectItem itemValue="1" itemLabel="1"/>
-                                    </h:selectOneRadio>
+                                    <h:inputText pt:placeholder="(-5; 5)" id="x" required="true" value="#{Record.point.x}" styleClass="inputText">
+                                        <f:validateDoubleRange minimum="-5.0" maximum="5.0"/>
+                                    </h:inputText>
                                 </td>
                             </tr>
                         </table>
@@ -48,18 +41,19 @@
                         <label for="y">
                             Y =
                         </label>
-                        <!--<h:inputText pt:placeholder="(-5; 3)" id="y" required="true" value="#{Record.point.y}"/>-->
+
                         <p:spinner
                                    id="y"  name="y" min="-5" required="true" value="#{Record.point.y}" max="5"
-                                   stepFactor="0.1"/>
+                                   stepFactor="0.1" styleClass=".spinner"/>
                     </div>
                     <div id="r-group">
                         <label>
                             R =
                         </label>
+
                         <p:spinner onchange="drawGraph(canvas, document.getElementById('r_input').value, itmoRed);"
                                    id="r" name="r" min="1" required="true" value="#{Record.radius}" max="3"
-                                   stepFactor="0.5"/>
+                                   stepFactor="0.5" styleClass=".spinner"/>
                     </div>
                     <div>
                         <h:commandButton id="submit" action="results.xhtml"  type="submit" value="Проверить"
@@ -74,7 +68,6 @@
                                 onclick="window.location='index.xhtml';">На главную
                         </button>
                     </div>
-                    <h:inputHidden id="x" value="#{Record.point.x}"/>
                 </h:form>
             </td>
             <td class="sidebar" colspan="5">

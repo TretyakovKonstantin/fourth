@@ -1,38 +1,20 @@
 @import url("#{resource['css/master.css']}");
 
 #x-group, #y-group, #r-group {
-    margin: 8px auto;
+    margin: 20px auto;
 }
 
-#y {
-    width: 139px;
-    height: 13px;
-}
-
-#y:focus {
-    outline: none;
-}
-
-#r_input, #y-group {
-    all: unset;
-    background-color: white;
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 11px;
-    text-align: left;
-    padding: 1ex;
-    width: 139px;
-    height: 13px;
-    border-radius: 20px;
-    border: 2px solid #1946ba;
-}
 .spinner{
-    height: 60px;
-    width: 60px;
-    border-left: 3px solid rgba(239, 0, 0, 0.15);
-    border-right: 3px solid rgba(239, 0, 0, 0.15);
-    border-bottom: 3px solid rgba(239, 0, 0, 0.15);
-    border-top: 3px solid rgba(239, 0, 0, 0.8);
-    border-radius: 100%;
+    border-color: black;
+    border-width: 3px;
+    border-style: solid;
+    width: 100px;
+    height: 20px;
+}
+.inputText{
+    border-color: black;
+    border-width: 3px;
+    border-style: solid;
+    width: 100px;
+    height: 20px;
 }

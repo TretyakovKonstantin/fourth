@@ -59,9 +59,7 @@ public class History
             records.removeLast();
         }
             EntityManager em = factory.createEntityManager();
-            em.getTransaction().begin();
             em.persist(record);
-            em.getTransaction().commit();
 
             em.close();
 
