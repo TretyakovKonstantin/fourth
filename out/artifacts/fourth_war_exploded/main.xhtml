@@ -18,7 +18,6 @@
             <h:outputScript library="js" name="drawMain.js"/>
             <h:outputScript library="js" name="send.js"/>
             <h:outputStylesheet library="css" name="main.css"/>
-            <h:outputStylesheet library="css" name="results.css"/>
 
         </ui:define>
         <ui:define name="content">
@@ -31,8 +30,7 @@
                                     X =
                                 </td>
                                 <td>
-                                    <h:inputText pt:placeholder="(-5; 5)" id="x" required="true"
-                                                 value="#{Record.point.x}" styleClass="inputText">
+                                    <h:inputText pt:placeholder="(-5; 5)" id="x" required="true" value="#{Record.point.x}" styleClass="inputText">
                                         <f:validateDoubleRange minimum="-5.0" maximum="5.0"/>
                                     </h:inputText>
                                 </td>
@@ -45,8 +43,8 @@
                         </label>
 
                         <p:spinner
-                                id="y" name="y" min="-5" required="true" value="#{Record.point.y}" max="5"
-                                stepFactor="0.1" styleClass=".spinner"/>
+                                   id="y"  name="y" min="-5" required="true" value="#{Record.point.y}" max="5"
+                                   stepFactor="0.1" styleClass=".spinner"/>
                     </div>
                     <div id="r-group">
                         <label>
@@ -58,7 +56,7 @@
                                    stepFactor="0.5" styleClass=".spinner"/>
                     </div>
                     <div>
-                        <h:commandButton id="submit" action="main.xhtml" type="submit" value="Проверить"
+                        <h:commandButton id="submit" action="results.xhtml"  type="submit" value="Проверить"
                                          class="button crimson">
                             <f:actionListener binding="#{Record.process()}"/>
                             <f:actionListener binding="#{History.addRecord(Record)}"/>
@@ -71,47 +69,6 @@
                         </button>
                     </div>
                 </h:form>
-                <table class="result">
-                    <thead>
-                    <tr>
-                        <th class="number">x</th>
-                        <th class="number">y</th>
-                        <th class="number">r</th>
-                        <th>Результат</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <ui:repeat value="#{History.getRecords()}" var="value">
-                        <tr>
-                            <td class="number">
-                                <h:outputText value="#{value.point.x}">
-                                    <f:convertNumber maxFractionDigits="2"/>
-                                </h:outputText>
-                            </td>
-                            <td class="number">
-                                <h:outputText value="#{value.point.y}">
-                                    <f:convertNumber maxFractionDigits="2"/>
-                                </h:outputText>
-                            </td>
-                            <td class="number">
-                                <h:outputText value="#{value.radius}">
-                                    <f:convertNumber maxFractionDigits="1"/>
-                                </h:outputText>
-                            </td>
-                            <td>
-                                <h:outputText rendered="#{value.result}" value="Точка входит в область."/>
-                                <h:outputText rendered="#{!value.result}" value="Точка находится вне области."/>
-                            </td>
-                        </tr>
-                        <script type="text/javascript">
-                            window.addEventListener("load", function () {
-                                drawPoint(document.getElementById("areaCanvas"), #{value.point.x}, #{value.point.y}, document.getElementById("r").value);
-                            });
-
-                        </script>
-                    </ui:repeat>
-                    </tbody>
-                </table>
             </td>
             <td class="sidebar" colspan="5">
                 <ui:include src="area.html"/>

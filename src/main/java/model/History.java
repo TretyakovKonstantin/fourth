@@ -1,25 +1,27 @@
 package model;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.ejb.Stateless;
+import javax.persistence.*;
 import java.util.*;
+
 
 public class History
 {
-    private static final int CAPACITY = 5;
+    private static final int CAPACITY = 10;
     private Deque<Record> records;
+
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("record");
 
     public History()
     {
         records = new LinkedList<Record>();
-        establishDatabaseConnection();
+        //establishDatabaseConnection();
     }
 
     private void establishDatabaseConnection()
     {
 
-        factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+       // factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 
 //        PGSimpleDataSource dataSource = new PGSimpleDataSource();
 //        dataSource.setServerName("localhost");
@@ -44,8 +46,8 @@ public class History
 //        }
     }
 
-    private static final String PERSISTENCE_UNIT_NAME = "record";
-    private static EntityManagerFactory factory;
+//    private static final String PERSISTENCE_UNIT_NAME = "record";
+//    private static EntityManagerFactory factory;
 
     public Deque<Record> getRecords()
     {
@@ -58,10 +60,12 @@ public class History
         while (records.size() > CAPACITY) {
             records.removeLast();
         }
-            EntityManager em = factory.createEntityManager();
+        EntityManager em = emf.createEntityManager();
+//            EntityManager em = factory.createEntityManager();
+        EntityTransaction entityTransaction = em.getTransaction();
+        entityTransaction.begin();
             em.persist(record);
-
-            em.close();
+            entityTransaction.commit();
 
 //            final String sql = "INSERT INTO record (x, y, r, result) VALUES (?, ?, ?, ?)";
 //            final PreparedStatement statement = databaseConnection.prepareStatement(sql);
