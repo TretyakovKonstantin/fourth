@@ -6,14 +6,14 @@
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>model.Record</class>
         <properties>
-            <!--<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/studs"/>-->
-            <!--<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>-->
-            <!--<property name="javax.persistence.jdbc.user" value="s225054"/>-->
-            <!--<property name="javax.persistence.jdbc.password" value="WNzeCw2B"/>-->
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://pg:5432/studs"/>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"/>
-            <property name="javax.persistence.jdbc.user" value="postgres"/>
-            <property name="javax.persistence.jdbc.password" value="superteam"/>
+            <property name="javax.persistence.jdbc.user" value="s225054"/>
+            <property name="javax.persistence.jdbc.password" value="ywwD4697"/>
+            <!--<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>-->
+            <!--<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"/>-->
+            <!--<property name="javax.persistence.jdbc.user" value="postgres"/>-->
+            <!--<property name="javax.persistence.jdbc.password" value="superteam"/>-->
             <property name="eclipselink.ddl-generation" value="create-tables"/>
             <property name="eclipselink.ddl-generation.output-mode" value="database" />
         </properties>

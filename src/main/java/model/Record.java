@@ -19,6 +19,7 @@ public class Record implements Serializable
 
     public void setRadius(double radius) {
         this.radius = radius;
+        area.setRadius(radius);
     }
 
 

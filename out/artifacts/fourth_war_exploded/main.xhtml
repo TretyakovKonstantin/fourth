@@ -14,6 +14,7 @@
     <ui:composition template="template.xhtml">
         <ui:define name="head">
             <title>Лабораторная работа</title>
+            <h:outputStylesheet library="css" name="results.css"/>
             <h:outputScript library="js" name="draw.js"/>
             <h:outputScript library="js" name="drawMain.js"/>
             <h:outputScript library="js" name="send.js"/>
@@ -50,13 +51,13 @@
                         <label>
                             R =
                         </label>
-
-                        <p:spinner onchange="drawGraph(canvas, document.getElementById('r_input').value, itmoRed);"
-                                   id="r" name="r" min="1" required="true" value="#{Record.radius}" max="3"
+                        <h:inputHidden id="radius" value="#{Record.radius}"/>
+                        <p:spinner onchange="onRChange()" id="r" name="r" min="1"
+                                   required="true" value="#{History.useful}" max="3"
                                    stepFactor="0.5" styleClass=".spinner"/>
                     </div>
                     <div>
-                        <h:commandButton id="submit" action="results.xhtml"  type="submit" value="Проверить"
+                        <h:commandButton id="submit" action="main.xhtml"  type="submit" value="Проверить"
                                          class="button crimson">
                             <f:actionListener binding="#{Record.process()}"/>
                             <f:actionListener binding="#{History.addRecord(Record)}"/>
@@ -68,6 +69,47 @@
                                 onclick="window.location='index.xhtml';">На главную
                         </button>
                     </div>
+                    <table class="result">
+                        <thead>
+                        <tr>
+                            <th class="number">x</th>
+                            <th class="number">y</th>
+                            <th class="number">r</th>
+                            <th>Результат</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <ui:repeat value="#{History.getRecords()}" var="value">
+                            <tr>
+                                <td class="number">
+                                    <h:outputText value="#{value.point.x}">
+                                        <f:convertNumber maxFractionDigits="2"/>
+                                    </h:outputText>
+                                </td>
+                                <td class="number">
+                                    <h:outputText value="#{value.point.y}">
+                                        <f:convertNumber maxFractionDigits="2"/>
+                                    </h:outputText>
+                                </td>
+                                <td class="number">
+                                    <h:outputText value="#{value.radius}">
+                                        <f:convertNumber maxFractionDigits="1"/>
+                                    </h:outputText>
+                                </td>
+                                <td>
+                                    <h:outputText rendered="#{value.result}" value="Точка входит в область."/>
+                                    <h:outputText rendered="#{!value.result}" value="Точка находится вне области."/>
+                                </td>
+                            </tr>
+                            <script type="text/javascript">
+                                window.addEventListener("load", function ()
+                                {
+                                    drawPoint(document.getElementById("areaCanvas"), #{value.point.x}, #{value.point.y}, document.getElementById("radius").value);
+                                });
+                            </script>
+                        </ui:repeat>
+                        </tbody>
+                    </table>
                 </h:form>
             </td>
             <td class="sidebar" colspan="5">

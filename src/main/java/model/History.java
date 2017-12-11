@@ -6,18 +6,24 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 
 public class History {
-    private static final int CAPACITY = 10;
+    private static final int CAPACITY = 5;
     private Deque<Record> records;
+    private double useful =1D;
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("record");
 
     public History() {
         records = new LinkedList<Record>();
+    }
+
+    public double getUseful() {
+        return useful;
+    }
+
+    public void setUseful(double useful) {
+        this.useful = useful;
     }
 
     public Deque<Record> getRecords() {

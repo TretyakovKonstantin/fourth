@@ -1,5 +1,4 @@
-function convertFromPointToCanvas(canvas, xPoint, yPoint)
-{
+function convertFromPointToCanvas(canvas, xPoint, yPoint) {
     let xCenter = canvas.width / 2;
     let yCenter = canvas.height / 2;
 
@@ -12,8 +11,7 @@ function convertFromPointToCanvas(canvas, xPoint, yPoint)
     return [xCanvas, yCanvas];
 }
 
-function isPointInArea(x, y, radius)
-{
+function isPointInArea(x, y, radius) {
     let inTriangle =
         (x >= -radius && x <= 0) &&
         (y >= 0 && y <= radius) &&
@@ -30,8 +28,7 @@ function isPointInArea(x, y, radius)
     return inCircleQuadrant || inSquare || inTriangle;
 }
 
-function convertFromCanvasToPoint(canvas, xClient, yClient)
-{
+function convertFromCanvasToPoint(canvas, xClient, yClient) {
     let rect = canvas.getBoundingClientRect();
     let xCanvas = xClient - rect.left;
     let yCanvas = yClient - rect.top;
@@ -48,13 +45,11 @@ function convertFromCanvasToPoint(canvas, xClient, yClient)
     return [xPoint, yPoint];
 }
 
-function clearCanvas(canvas)
-{
+function clearCanvas(canvas) {
     canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
 }
 
-function drawPoint(canvas, x, y, radius)
-{
+function drawPoint(canvas, x, y, radius) {
     let [xCanvas, yCanvas] = convertFromPointToCanvas(canvas, x, y);
     let context = canvas.getContext("2d");
     let pointColor = isPointInArea(x, y, radius) ? "white" : "black";
@@ -63,8 +58,7 @@ function drawPoint(canvas, x, y, radius)
     context.fillRect(xCanvas - 1, yCanvas - 1, 2, 2);
 }
 
-function drawGraph(canvas, radius, color)
-{
+function drawGraph(canvas, radius, color) {
     clearCanvas(canvas);
     drawTriangle(canvas, color);
     drawRectangle(canvas, color);
@@ -72,8 +66,7 @@ function drawGraph(canvas, radius, color)
     drawAxes(canvas, radius);
 }
 
-function drawAxes(canvas, radius)
-{
+function drawAxes(canvas, radius) {
     let context = canvas.getContext("2d");
     let width = canvas.width;
     let height = canvas.height;
@@ -146,8 +139,7 @@ function drawAxes(canvas, radius)
     context.stroke();
 }
 
-function drawTriangle(canvas, color)
-{
+function drawTriangle(canvas, color) {
     let context = canvas.getContext("2d");
     let width = canvas.width;
     let height = canvas.height;
@@ -163,15 +155,14 @@ function drawTriangle(canvas, color)
     context.stroke();
 }
 
-function drawRectangle(canvas, color)
-{
+function drawRectangle(canvas, color) {
     let context = canvas.getContext("2d");
     let width = canvas.width;
     let height = canvas.height;
     context.beginPath();
     context.moveTo(width / 2, height / 2);
     context.lineTo(width / 2, height / 4 + 10);
-    context.lineTo(width - 20, height / 4 + 10 );
+    context.lineTo(width - 20, height / 4 + 10);
     context.lineTo(width - 20, height / 2);
     context.closePath();
     context.strokeStyle = color;
@@ -180,12 +171,11 @@ function drawRectangle(canvas, color)
     context.stroke();
 }
 
-function drawCircleQuadrant(canvas, color)
-{
+function drawCircleQuadrant(canvas, color) {
     let context = canvas.getContext("2d");
     let width = canvas.width;
     let height = canvas.height;
-    context.arc(width / 2, height / 2, width / 2 - 20, 2*Math.PI, 5 * Math.PI / 2, false);
+    context.arc(width / 2, height / 2, width / 2 - 20, 2 * Math.PI, 5 * Math.PI / 2, false);
     context.closePath();
     context.strokeStyle = color;
     context.fillStyle = color;

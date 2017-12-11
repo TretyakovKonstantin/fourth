@@ -4,14 +4,14 @@
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
     http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
-    <managed-bean>
-        <managed-bean-name>History</managed-bean-name>
-        <managed-bean-class>model.History</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>Record</managed-bean-name>
-        <managed-bean-class>model.Record</managed-bean-class>
-        <managed-bean-scope>view</managed-bean-scope>
-    </managed-bean>
+<managed-bean>
+    <managed-bean-name>History</managed-bean-name>
+    <managed-bean-class>model.History</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+</managed-bean>
+<managed-bean>
+    <managed-bean-name>Record</managed-bean-name>
+    <managed-bean-class>model.Record</managed-bean-class>
+    <managed-bean-scope>view</managed-bean-scope>
+</managed-bean>
 </faces-config>
